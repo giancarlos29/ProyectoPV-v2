@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using ProyectoPV.Models;
 using System.Data.Entity;
 using ProyectoPV.Presentacion;
-using System.Data.SqlClient;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
@@ -180,7 +179,8 @@ namespace ProyectoPV
                         else //De lo contrario solo se muestra MessageBox. 
                         {
                                      MessageBox.Show(deu.Nombres + " " + deu.Apellidos + " Ha pagado" +
-                                      " una cuota, le quedan " + deu.CuotasVencidas.ToString() + " Cuotas vencidas");
+                                      " una cuota, le quedan " + deu.CuotasVencidas.ToString() + " Cuotas vencidas",
+                                      "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                  }
                         
                     }
@@ -191,7 +191,8 @@ namespace ProyectoPV
             catch (Exception Men)
             {
                 MessageBox.Show(Men.Message);
-                MessageBox.Show("Por haga click en algun registro!","Error:No cliente seleccionado");
+                MessageBox.Show("Por haga click en algun registro!","Error:No cliente seleccionado",
+                    MessageBoxButtons.OK , MessageBoxIcon.Error);
             }
 
         }
@@ -247,17 +248,9 @@ namespace ProyectoPV
 
                     if (diasDesdeUltimoBackUp.Value.Days > 25)
                     {
-                        //SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=SistemaPrestamosPV;Integrated Security=True");
-                        //SqlCommand cmd = new SqlCommand();
-                        //cmd.Connection = conn;
-                        //cmd.CommandText = "backupdb";
-                        //cmd.CommandType = CommandType.StoredProcedure;
-                        //conn.Open();
-                        //cmd.ExecuteNonQuery();
-                        //conn.Close();
+                       
 
                         db.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, "backupdb");
-                        //var bu = db.backupdb();
 
                         var backu = new BackUp();
                         backu.UltimoBackUp = fechaActual;
