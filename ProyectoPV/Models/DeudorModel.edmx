@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SistemaPrestamosPVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BackUps">
+          <Key>
+            <PropertyRef Name="IDBackUp" />
+          </Key>
+          <Property Name="IDBackUp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UltimoBackUp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Deudores">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="50" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Capital" Type="float" Nullable="false" />
+          <Property Name="Interes" Type="float" />
+          <Property Name="ReditoMensual" Type="float" />
+          <Property Name="CuotasVencidas" Type="int" />
+          <Property Name="ReditoAcumulado" Type="float" />
+          <Property Name="FechaInicializacionPrestamo" Type="date" Nullable="false" />
+          <Property Name="CuotasGeneradas" Type="int" />
+          <Property Name="UltimoPago" Type="date" Nullable="false" />
+          <Property Name="CuotasPagadas" Type="int" />
+          <Property Name="CuotasPagadasATiempo" Type="int" />
+          <Property Name="Score" Type="int" />
+          <Property Name="Cedula" Type="varchar" MaxLength="11" />
+          <Property Name="Telefono" Type="varchar" MaxLength="15" />
+          <Property Name="Telefono2" Type="varchar" MaxLength="15" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Direccion" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Saldadores">
+          <Key>
+            <PropertyRef Name="IDSaldador" />
+          </Key>
+          <Property Name="IDSaldador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="50" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="50" />
+          <Property Name="CapitalSaldado" Type="float" />
+          <Property Name="FechaInicializacionPrestamo" Type="date" />
+          <Property Name="FechaFinalizacionPrestamo" Type="date" />
+          <Property Name="CuotasGeneradas" Type="int" />
+          <Property Name="CuotasPagadasATiempo" Type="int" />
+          <Property Name="Score" Type="int" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="Direccion" Type="varchar" MaxLength="250" />
+          <Property Name="Cedula" Type="varchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="backupdb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spSumCuotasVencidas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SistemaPrestamosPVModelStoreContainer">
+          <EntitySet Name="BackUps" EntityType="Self.BackUps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deudores" EntityType="Self.Deudores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Saldadores" EntityType="Self.Saldadores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SistemaPrestamosPVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Deudores">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Capital" Type="Double" Nullable="false" />
+          <Property Name="Interes" Type="Double" />
+          <Property Name="ReditoMensual" Type="Double" />
+          <Property Name="FechaInicializacionPrestamo" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="CuotasGeneradas" Type="Int32" />
+          <Property Name="CuotasVencidas" Type="Int32" />
+          <Property Name="UltimoPago" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="CuotasPagadas" Type="Int32" />
+          <Property Name="ReditoAcumulado" Type="Double" />
+          <Property Name="CuotasPagadasATiempo" Type="Int32" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="SistemaPrestamosPVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Deudores" EntityType="SistemaPrestamosPVModel.Deudores" />
+          <EntitySet Name="Usuarios" EntityType="SistemaPrestamosPVModel.Usuario" />
+          <EntitySet Name="Saldadores" EntityType="SistemaPrestamosPVModel.Saldadore" />
+          <FunctionImport Name="backupdb" />
+          <FunctionImport Name="spSumCuotasVencidas" ReturnType="Collection(Int32)" />
+          <EntitySet Name="BackUps" EntityType="SistemaPrestamosPVModel.BackUp" />
+        </EntityContainer>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Saldadore">
+          <Key>
+            <PropertyRef Name="IDSaldador" />
+          </Key>
+          <Property Name="IDSaldador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CapitalSaldado" Type="Double" />
+          <Property Name="FechaInicializacionPrestamo" Type="DateTime" Precision="0" />
+          <Property Name="FechaFinalizacionPrestamo" Type="DateTime" Precision="0" />
+          <Property Name="CuotasGeneradas" Type="Int32" />
+          <Property Name="CuotasPagadasATiempo" Type="Int32" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BackUp">
+          <Key>
+            <PropertyRef Name="IDBackUp" />
+          </Key>
+          <Property Name="IDBackUp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UltimoBackUp" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SistemaPrestamosPVModelStoreContainer" CdmEntityContainer="SistemaPrestamosPVEntities">
+          <EntitySetMapping Name="Deudores">
+            <EntityTypeMapping TypeName="SistemaPrestamosPVModel.Deudores">
+              <MappingFragment StoreEntitySet="Deudores">
+                <ScalarProperty Name="CuotasGeneradas" ColumnName="CuotasGeneradas" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="CuotasPagadasATiempo" ColumnName="CuotasPagadasATiempo" />
+                <ScalarProperty Name="CuotasPagadas" ColumnName="CuotasPagadas" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="ReditoAcumulado" ColumnName="ReditoAcumulado" />
+                <ScalarProperty Name="ReditoMensual" ColumnName="ReditoMensual" />
+                <ScalarProperty Name="CuotasVencidas" ColumnName="CuotasVencidas" />
+                <ScalarProperty Name="UltimoPago" ColumnName="UltimoPago" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Interes" ColumnName="Interes" />
+                <ScalarProperty Name="FechaInicializacionPrestamo" ColumnName="FechaInicializacionPrestamo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="SistemaPrestamosPVModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saldadores">
+            <EntityTypeMapping TypeName="SistemaPrestamosPVModel.Saldadore">
+              <MappingFragment StoreEntitySet="Saldadores">
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="CuotasPagadasATiempo" ColumnName="CuotasPagadasATiempo" />
+                <ScalarProperty Name="CuotasGeneradas" ColumnName="CuotasGeneradas" />
+                <ScalarProperty Name="FechaFinalizacionPrestamo" ColumnName="FechaFinalizacionPrestamo" />
+                <ScalarProperty Name="FechaInicializacionPrestamo" ColumnName="FechaInicializacionPrestamo" />
+                <ScalarProperty Name="CapitalSaldado" ColumnName="CapitalSaldado" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="IDSaldador" ColumnName="IDSaldador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="backupdb" FunctionName="SistemaPrestamosPVModel.Store.backupdb" />
+          <FunctionImportMapping FunctionImportName="spSumCuotasVencidas" FunctionName="SistemaPrestamosPVModel.Store.spSumCuotasVencidas" />
+          <EntitySetMapping Name="BackUps">
+            <EntityTypeMapping TypeName="SistemaPrestamosPVModel.BackUp">
+              <MappingFragment StoreEntitySet="BackUps">
+                <ScalarProperty Name="UltimoBackUp" ColumnName="UltimoBackUp" />
+                <ScalarProperty Name="IDBackUp" ColumnName="IDBackUp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
