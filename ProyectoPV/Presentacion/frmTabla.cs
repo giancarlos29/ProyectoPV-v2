@@ -116,16 +116,11 @@ namespace ProyectoPV.Presentacion
 
                 MessageBox.Show("Campos obligatorios: Nombres, capital(solo numéricos) e interes(solo numéricos)", "Error!!");
             }
-            
-
         }
-
         private void btnRegresar_Click(object sender, EventArgs e)
         {
                 Close();
         }
 
     }
-
-    
 }
